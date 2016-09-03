@@ -84,14 +84,7 @@ int main(){
 			cout << "r = "<< r << " c = "<< c << " checker Failed!\n";
 			r++;
 		}
+	}
+	return 0;
 }
 
-
-
-
-
-
-
-
-
-}
