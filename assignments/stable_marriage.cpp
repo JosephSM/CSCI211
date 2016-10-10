@@ -3,7 +3,6 @@ using namespace std;
 
 
 // check that no man is married to more than 1 woman
-// and visa versa
 bool validMarriage(int q[], int c){
 	for(int i = 0; i < c; i++){
 		if(q[c] == q[i]){ 
@@ -52,6 +51,7 @@ bool isStable(int q[], int mp[3][3], int wp[3][3]){
 	return true;
 }
 
+
 void print(int q[]) {
 	static int solution = 0;
 		cout << "Solution #" << ++solution << ":\nMan\tWoman\n";
@@ -64,23 +64,31 @@ void print(int q[]) {
 //check all configurations of marriages where all marriages are stable
 void checkAllCombinations(int (&q)[3], int (&mp)[3][3], int (&wp)[3][3]){
 	int c = 0;
-	while(true){
+	while(true){	
+		//next row			
 		q[c]++;
-		
+
+		//exit if all configurations have been checked
 		if(c == -1) exit(0);
 		
+		//backtrack if column overflow
 		if(c == 3){ 
+
+			//if all mariages are stable,
+			//count and print solution.
 			if(isStable(q, mp, wp)){
 				print(q);
 			}
 			c--;
 		}		
 		
+		//backtrack if row overflow
 		else if(q[c] == 3){
 			q[c] = -1;
 			c--;
 		}
 		
+		//next column if woman is married to no other man
 		else if(validMarriage(q, c))
 			c++; 
 	}
