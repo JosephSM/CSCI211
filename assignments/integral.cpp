@@ -11,13 +11,12 @@ double cube(double a) {return a*a*a;}
 
 //ideally width is optional argument
 double integral(Func func, double a, double b, double width = .000001){
-	double integralApproximation, height;
-	int n = (int)((b-a)/width);
-	for(int i = 1; i <= n; i++){
-		height = func(a + (width * i));
-		integralApproximation += width * height;
+	double Approximation, height;
+	for(double i = a; i < b; i += width){
+		height = func(i);
+		Approximation += width * height;
 	}
-	return integralApproximation;
+	return Approximation;
 }
 
 
